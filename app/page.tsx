@@ -1,22 +1,34 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import Image from "next/image";
-import Link from "next/link";
+import { airportsApi } from "./(pages)/api/airportsApi";
+import { Airport } from "@/types";
+import Searcher from "@/components/shared/searcher/Searcher";
 
-export default function Home() {
+const LIMIT_PAGE_SIZE = 6;
+
+export default async function Home() {
+  let airports: Airport[] = [];
+  async function getAirports() {
+    try {
+      const { data } = await airportsApi.get("", {
+        params: {
+          limit: LIMIT_PAGE_SIZE,
+        },
+      });
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  if (false) {
+    const { data } = await getAirports();
+    airports = data;
+  }
   return (
     <div>
       <h1 className="text-color-primary-gradient">SkyConnect Explorer</h1>
-      <Input
-        className="placeholder-primary text-primary h-[2.3rem] rounded-[3.5rem] border-none bg-white focus-visible:ring-0"
-        placeholder="Buscar Aeropuertos..."
-      />
-      <Button className="background-color-primary-gradient border-1" asChild>
-        <Link href="#">
-          <Image src="/icons/search.svg" alt="Buscar" width={20} height={20} />
-          Buscar
-        </Link>
-      </Button>
+      <Searcher />
+      {airports.map((airport) => (
+        <h2 key={airport.id}>{airport.airport_name}</h2>
+      ))}
     </div>
   );
 }
