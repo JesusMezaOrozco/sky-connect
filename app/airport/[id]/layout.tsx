@@ -17,8 +17,10 @@ export default function Layout({
   return (
     <>
       <nav>
-        <Link href={`/airport/${id}/info`}>Info</Link>
+        <Link href={`/airport/${id}/info`}>General</Link>
         <Link href={`/airport/${id}/location`}>Location</Link>
+        <Link href={`/airport/${id}/location`}>Zona Horaria</Link>
+        <Link href={`/airport/${id}/location`}>Estadisticas</Link>
       </nav>
       <div>{children}</div>
       <div>{details}</div>
