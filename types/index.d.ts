@@ -14,3 +14,10 @@ export interface Airport {
   phone_number: string | null;
   timezone: string;
 }
+
+export interface Pagination {
+  limit: number;
+  offset: number;
+  count: number;
+  total: number;
+}
