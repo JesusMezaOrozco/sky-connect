@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { gotham_black, inter } from "@/fonts";
 
 import "./globals.css";
+import { StoreProvider } from "@/providers/Store";
 
 export const metadata: Metadata = {
   title: "Sky Connect",
@@ -16,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} ${gotham_black.className}`}>
-        {children}
+        <StoreProvider>{children}</StoreProvider>
       </body>
     </html>
   );
