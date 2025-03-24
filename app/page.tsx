@@ -152,7 +152,7 @@ const HomePageContent = () => {
           <Link
             href={`/airport/${airport.id}/general`}
             key={airport.id}
-            className="flex-1/3"
+            className="min-w-[300px] flex-1/3"
           >
             <AirportCard
               iata_code={airport.iata_code}

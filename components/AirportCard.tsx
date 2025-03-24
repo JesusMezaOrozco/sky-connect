@@ -13,7 +13,7 @@ export default function AirportCard({
   title,
 }: AirportCardProps) {
   return (
-    <div className="card-background relative h-[230px] w-full rounded-md border p-10">
+    <div className="card-background relative h-[200px] w-full rounded-md border p-8">
       <Image
         width={50}
         height={50}
