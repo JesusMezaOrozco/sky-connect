@@ -5,7 +5,8 @@
 
 :root {
   --radius: 0.525rem;
-  --dark: #0d1935;
+  --dark: rgba(13, 25, 53, 1);
+  --dark-opacity: rgba(13, 25, 53, 0.8);
   --primary: #006aff;
   --secondary: #0060ff;
   --light: #00f9ff;
@@ -13,8 +14,10 @@
   --foreground: #ffffff;
 }
 
-/* .dark {
-} */
+.dark {
+  --dark: #000000;
+  --dark-opacity: rgba(0, 0, 0, 0.7);
+}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -51,7 +54,7 @@
     45deg,
     var(--white-opacity-20) 0%,
     rgba(255, 255, 255, 0.1) 10%,
-    rgba(14, 25, 52, 0.8) 40%
+    var(--dark-opacity) 40%
   );
 }
 

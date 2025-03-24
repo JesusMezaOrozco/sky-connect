@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
+import Theme from "../theme/Theme";
 
 interface SearcherProps {
   onChange: (value: string) => void;
@@ -37,6 +38,7 @@ export default function Searcher({ onChange }: SearcherProps) {
           <Image src="/icons/search.svg" alt="Buscar" width={20} height={20} />
           <p>Search</p>
         </Button>
+        <Theme />
       </div>
       {value && (
         <div className="flex items-center gap-4">

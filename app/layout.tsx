@@ -3,6 +3,7 @@ import { gotham_black, inter } from "@/fonts";
 import { StoreProvider } from "@/providers/Store";
 import Loader from "@/components/shared/loader/Loader";
 import Toaster from "@/components/shared/toaster/Toaster";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -21,9 +22,11 @@ export default function RootLayout({
         className={`${inter.className} ${gotham_black.className} main-background h-screen`}
       >
         <StoreProvider>
-          {children}
-          <Loader />
-          <Toaster />
+          <ThemeProvider>
+            {children}
+            <Loader />
+            <Toaster />
+          </ThemeProvider>
         </StoreProvider>
       </body>
     </html>
