@@ -38,6 +38,14 @@ export default function Searcher({ onChange }: SearcherProps) {
           <p>Search</p>
         </Button>
       </div>
+      {value && (
+        <div className="flex items-center gap-4">
+          <Image alt="info" width={25} height={25} src="/icons/info.svg" />
+          <p className="text-white">
+            You are searching into airports previously fetched!
+          </p>
+        </div>
+      )}
     </div>
   );
 }
