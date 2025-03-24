@@ -1,10 +1,11 @@
-import Link from "next/link";
+"use client";
+import AirportDetailTabs from "@/components/AirportDetailTabs";
+import { useAirport } from "@/hooks/useAirport";
 import { use } from "react";
 
 type Params = Promise<{ id: string }>;
 
 export default function Layout({
-  children,
   details,
   params,
 }: {
@@ -14,16 +15,23 @@ export default function Layout({
 }) {
   const pageParams = use(params);
   const id = pageParams.id;
+  const airport = useAirport(id);
+
   return (
     <>
-      <nav>
-        <Link href={`/airport/${id}/info`}>General</Link>
-        <Link href={`/airport/${id}/location`}>Location</Link>
-        <Link href={`/airport/${id}/location`}>Zona Horaria</Link>
-        <Link href={`/airport/${id}/location`}>Estadisticas</Link>
-      </nav>
-      <div>{children}</div>
-      <div>{details}</div>
+      {airport ? (
+        <div className="flex h-full flex-col gap-10 px-10 py-6">
+          <div className="flex flex-col flex-wrap gap-6">
+            <h1 className="text-color-primary-gradient m-auto text-center text-5xl">
+              {airport.airport_name}
+            </h1>
+            <AirportDetailTabs id={id} />
+          </div>
+          <section>{details}</section>
+        </div>
+      ) : (
+        <p>Loading...</p>
+      )}
     </>
   );
 }

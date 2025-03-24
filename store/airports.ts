@@ -4,8 +4,8 @@ export type SearchedAirports = Record<number, Airport[]>;
 export type IndexedAirports = Record<number, Airport>;
 
 export type AirportsState = {
-  searchedAirports: SearchedAirports | object;
-  indexedAirports: IndexedAirports | object;
+  searchedAirports: SearchedAirports;
+  indexedAirports: IndexedAirports;
 };
 
 export type AirportsActions = {

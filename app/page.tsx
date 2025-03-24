@@ -2,7 +2,7 @@
 // import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import { useStore } from "@/providers/Store";
-import { useCallback, useEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useState } from "react";
 import { Airport } from "@/types";
 import { SearchedAirports } from "@/store/airports";
 import Link from "next/link";
@@ -111,7 +111,7 @@ const test: Airport[] = [
   },
 ];
 
-const HomePage = () => {
+const HomePageContent = () => {
   const searchParams = useSearchParams();
   const offset = searchParams.get("offset") || "0";
   const [airports, setAirports] = useState<Airport[]>(test);
@@ -150,7 +150,7 @@ const HomePage = () => {
       <div className="flex flex-wrap items-center justify-center gap-12 px-10">
         {airports.map((airport) => (
           <Link
-            href={`/airport/${airport.id}/info`}
+            href={`/airport/${airport.id}/general`}
             key={airport.id}
             className="flex-1/3"
           >
@@ -164,6 +164,14 @@ const HomePage = () => {
       </div>
       <Paginator itemsPerPage={LIMIT_PAGE_SIZE} totalItems={totalItems} />
     </div>
+  );
+};
+
+const HomePage = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <HomePageContent />
+    </Suspense>
   );
 };
 

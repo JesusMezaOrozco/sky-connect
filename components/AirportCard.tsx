@@ -23,7 +23,7 @@ export default function AirportCard({
       />
       <div className="flex h-full flex-col justify-between">
         <div className="max-w-[70%]">
-          <h3 className="mb-2 text-xl font-bold">Airport {title}</h3>
+          <h4 className="mb-2 text-xl font-bold">Airport {title}</h4>
           <p>{location}</p>
         </div>
         <h2 className="text-color-primary-gradient text-3xl">{iata_code}</h2>

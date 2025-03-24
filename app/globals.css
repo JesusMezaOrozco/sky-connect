@@ -9,6 +9,7 @@
   --primary: #006aff;
   --secondary: #0060ff;
   --light: #00f9ff;
+  --white-opacity-20: rgba(255, 255, 255, 0.2);
   --foreground: #ffffff;
 }
 
@@ -47,7 +48,8 @@
     z-index: -1;
   }
   h1,
-  h2 {
+  h2,
+  h4 {
     font-family: "gotham_black", "gotham_black Fallback" !important;
   }
 }
@@ -67,7 +69,7 @@
 .card-background {
   background: linear-gradient(
     45deg,
-    rgba(255, 255, 255, 0.2) 0%,
+    var(--white-opacity-20) 0%,
     rgba(255, 255, 255, 0.1) 10%,
     rgba(14, 25, 52, 0.5) 40%
   );
@@ -86,4 +88,9 @@
   background-position: center;
   pointer-events: none;
   z-index: -2;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
 }
