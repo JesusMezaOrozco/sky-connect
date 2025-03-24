@@ -2,10 +2,11 @@ import { useCallback, useEffect, useState } from "react";
 import { useStore } from "@/providers/Store";
 import { Airport } from "@/types";
 import { SearchedAirports } from "@/store/airports";
+import axios from "axios";
 export const LIMIT_PAGE_SIZE = 6;
 
 export function useAirportDetail(id: string) {
-  const airportsById = useStore((store) => store.indexedAirports);
+  const { indexedAirports: airportsById } = useStore((store) => store);
   const [airport, setAirport] = useState<Airport>(() => {
     if (typeof window !== "undefined") {
       const cachedAirport = localStorage.getItem(`airport_${id}`);
@@ -31,9 +32,13 @@ export function useAirportList(offset: string) {
   const [airports, setAirports] = useState<Airport[]>([]);
   const [filter, setFilter] = useState("");
   const [totalItems, setTotalItems] = useState(test.length);
-  const { addAirports, searchedAirports, indexedAirports } = useStore(
-    (state) => state,
-  );
+  const {
+    addAirports,
+    searchedAirports,
+    indexedAirports,
+    setLoading,
+    setMessage,
+  } = useStore((state) => state);
   const getAirports = useCallback(async () => {
     if (searchedAirports.hasOwnProperty(offset)) {
       const airportsByOffset = searchedAirports as SearchedAirports;
@@ -41,21 +46,31 @@ export function useAirportList(offset: string) {
       return;
     }
     try {
-      // const { data, pagination } = await axios.get("/api/airports", {
-      //   params: {
-      //     limit: LIMIT_PAGE_SIZE,
-      //     offset,
-      //   },
-      // });
-      setTotalItems(test.length);
-      // setAirports(test);
+      setLoading(true);
+      const { data } = await axios.get("/api/airports", {
+        params: {
+          limit: LIMIT_PAGE_SIZE,
+          offset,
+        },
+      });
+      setTotalItems(data.pagination.total);
       addAirports({
-        [offset]: test.slice(Number(offset), Number(offset) + LIMIT_PAGE_SIZE),
+        [offset]: data.data,
+      });
+      setMessage({
+        type: "success",
+        text: "Airports loaded successfully",
       });
     } catch (error) {
       console.log(error);
+      setMessage({
+        type: "error",
+        text: "Error loading airports",
+      });
+    } finally {
+      setLoading(false);
     }
-  }, [offset, searchedAirports, addAirports]);
+  }, [offset, searchedAirports, addAirports, setLoading, setMessage]);
 
   const handleSearch = (value: string) => {
     const airports = Object.values(indexedAirports);

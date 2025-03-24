@@ -51,7 +51,7 @@ export default function Paginator({
   };
 
   return (
-    <Pagination className="sticky bottom-0 w-full py-2 backdrop-blur-2xl max-md:scale-75">
+    <Pagination className="fixed bottom-0 w-full py-2 backdrop-blur-2xl max-md:scale-75">
       <PaginationContent>
         <Button disabled={page == 1} className="px-7">
           <PaginationItem>

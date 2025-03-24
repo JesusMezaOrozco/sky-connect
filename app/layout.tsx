@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { gotham_black, inter } from "@/fonts";
-
-import "./globals.css";
 import { StoreProvider } from "@/providers/Store";
+import Loader from "@/components/shared/loader/Loader";
+import Toaster from "@/components/shared/toaster/Toaster";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Sky Connect",
@@ -16,8 +17,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} ${gotham_black.className} h-screen`}>
-        <StoreProvider>{children}</StoreProvider>
+      <body
+        className={`${inter.className} ${gotham_black.className} main-background h-screen`}
+      >
+        <StoreProvider>
+          {children}
+          <Loader />
+          <Toaster />
+        </StoreProvider>
       </body>
     </html>
   );
