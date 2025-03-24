@@ -1,6 +1,6 @@
 "use client";
 import AirportDetailTabs from "@/components/AirportDetailTabs";
-import { useAirport } from "@/hooks/useAirport";
+import { useAirportDetail } from "@/hooks/useAirport";
 import { use } from "react";
 
 type Params = Promise<{ id: string }>;
@@ -15,7 +15,7 @@ export default function Layout({
 }) {
   const pageParams = use(params);
   const id = pageParams.id;
-  const airport = useAirport(id);
+  const airport = useAirportDetail(id);
 
   return (
     <>

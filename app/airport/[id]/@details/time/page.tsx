@@ -1,11 +1,11 @@
 "use client";
 import AirportInfoCard from "@/components/AirportInfoCard";
-import { useAirport } from "@/hooks/useAirport";
+import { useAirportDetail } from "@/hooks/useAirport";
 import { useParams } from "next/navigation";
 
 export default function TimePage() {
   const { id } = useParams();
-  const airport = useAirport(String(id));
+  const airport = useAirportDetail(String(id));
   return (
     <div className="flex flex-col gap-10">
       <AirportInfoCard

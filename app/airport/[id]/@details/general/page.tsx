@@ -1,11 +1,11 @@
 "use client";
 import { useParams } from "next/navigation";
-import { useAirport } from "@/hooks/useAirport";
+import { useAirportDetail } from "@/hooks/useAirport";
 import AirportInfoCard from "@/components/AirportInfoCard";
 
 export default function Details() {
   const { id } = useParams();
-  const airport = useAirport(String(id));
+  const airport = useAirportDetail(String(id));
   return (
     <AirportInfoCard
       title="General Information"
