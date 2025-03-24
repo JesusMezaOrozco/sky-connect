@@ -47,11 +47,7 @@
     z-index: -1;
   }
   h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h2 {
     font-family: "gotham_black", "gotham_black Fallback" !important;
   }
 }
@@ -66,4 +62,28 @@
   background-clip: text;
   text-fill-color: transparent;
   width: fit-content;
+}
+
+.card-background {
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.1) 10%,
+    rgba(14, 25, 52, 0.5) 40%
+  );
+}
+
+.card-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background: url("/assets/bg-2.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+  z-index: -2;
 }

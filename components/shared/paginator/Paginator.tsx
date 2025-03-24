@@ -6,8 +6,6 @@ import {
   PaginationEllipsis,
   PaginationItem,
   PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
 } from "@/components/ui/pagination";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -53,14 +51,16 @@ export default function Paginator({
   };
 
   return (
-    <Pagination>
+    <Pagination className="sticky bottom-0 w-full py-2 backdrop-blur-2xl max-md:scale-75">
       <PaginationContent>
-        <Button disabled={page == 1}>
+        <Button disabled={page == 1} className="px-7">
           <PaginationItem>
-            <PaginationPrevious
+            <PaginationLink
               href="#"
               onClick={() => handlePageChange(offset - itemsPerPage)}
-            />
+            >
+              Anterior
+            </PaginationLink>
           </PaginationItem>
         </Button>
         {totalPages > 3 && page === totalPages && (
@@ -69,10 +69,7 @@ export default function Paginator({
           </PaginationItem>
         )}
         {getPageNumbers().map((pageNumber) => (
-          <Button
-            key={pageNumber}
-            className={`${pageNumber === page ? "bg-amber-300" : ""}`}
-          >
+          <Button key={pageNumber}>
             <PaginationItem>
               <PaginationLink
                 href="#"
@@ -92,10 +89,13 @@ export default function Paginator({
         )}
         <Button disabled={page === totalPages}>
           <PaginationItem>
-            <PaginationNext
+            <PaginationLink
               href="#"
               onClick={() => handlePageChange(offset + itemsPerPage)}
-            />
+              className="px-7"
+            >
+              Siguiente
+            </PaginationLink>
           </PaginationItem>
         </Button>
       </PaginationContent>

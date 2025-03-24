@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} ${gotham_black.className}`}>
+      <body className={`${inter.className} ${gotham_black.className} h-screen`}>
         <StoreProvider>{children}</StoreProvider>
       </body>
     </html>

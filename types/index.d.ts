@@ -10,7 +10,7 @@ export interface Airport {
   latitude: string;
   longitude: string;
   airport_name: string;
-  country_name: string;
+  country_name: string | null;
   phone_number: string | null;
   timezone: string;
 }
