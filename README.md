@@ -96,6 +96,7 @@ El buscador de la aplicación solo busca en el store local. Esto significa que l
 1. git clone <dir_repo_remote>
 2. npm i (instalacion de dependencias)
 3. npm run test (ejecucion de pruebas unitarias y de integracion)
+3. configurar archivo env.local segun archivo env.example y definir la respectiva api key
 3. npm run dev (levantar servidor local de desarrollo)
 
 ```
