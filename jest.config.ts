@@ -143,7 +143,7 @@ const config: Config = {
   // setupFiles: ["./__tests__/setup.ts"],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  setupFilesAfterEnv: ["./__tests__/setup.ts"],
+  setupFilesAfterEnv: ["./__tests__/setup.tsx"],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
@@ -152,7 +152,7 @@ const config: Config = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: "jsdom",
+  testEnvironment: "jest-fixed-jsdom",
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -167,7 +167,11 @@ const config: Config = {
   // ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-  testPathIgnorePatterns: ["/node_modules/", "/__tests__/setup.ts"],
+  testPathIgnorePatterns: [
+    "/node_modules/",
+    "/__tests__/setup.tsx",
+    "__tests__/mock",
+  ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],
@@ -186,6 +190,10 @@ const config: Config = {
   //   "/node_modules/",
   //   "\\.pnp\\.[^\\/]+$"
   // ],
+
+  testEnvironmentOptions: {
+    customExportConditions: [""],
+  },
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,
