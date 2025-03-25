@@ -9,6 +9,7 @@ export type AirportsState = {
   searchedAirports: SearchedAirports;
   indexedAirports: IndexedAirports;
   isLoading: boolean;
+  totalItems: number;
   message: {
     type: messageType;
     text: string;
@@ -19,6 +20,7 @@ export type AirportsActions = {
   addAirports: (searchedAirports: AirportsState["searchedAirports"]) => void;
   setLoading: (isLoading: boolean) => void;
   setMessage: (message: AirportsState["message"]) => void;
+  setTotalItems: (total: number) => void;
 };
 
 export type AirportsStore = AirportsState & AirportsActions;
@@ -28,6 +30,7 @@ export const defaultInitAirportsState: AirportsState = {
   indexedAirports: {},
   isLoading: true,
   message: null,
+  totalItems: 0,
 };
 
 export const createAirportsStore = (
@@ -60,5 +63,6 @@ export const createAirportsStore = (
       })),
     setLoading: (isLoading) => set((state) => ({ ...state, isLoading })),
     setMessage: (message) => set((state) => ({ ...state, message })),
+    setTotalItems: (totalItems) => set((state) => ({ ...state, totalItems })),
   }));
 };

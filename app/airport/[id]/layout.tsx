@@ -1,5 +1,6 @@
 "use client";
 import AirportDetailTabs from "@/components/AirportDetailTabs";
+import Loader from "@/components/shared/loader/Loader";
 import { useAirportDetail } from "@/hooks/useAirport";
 import { use } from "react";
 
@@ -30,7 +31,7 @@ export default function Layout({
           <section>{details}</section>
         </div>
       ) : (
-        <p>Loading...</p>
+        <Loader />
       )}
     </>
   );

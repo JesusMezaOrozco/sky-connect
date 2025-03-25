@@ -31,13 +31,14 @@ export function useAirportDetail(id: string) {
 export function useAirportList(offset: string) {
   const [airports, setAirports] = useState<Airport[]>([]);
   const [filter, setFilter] = useState("");
-  const [totalItems, setTotalItems] = useState(0);
   const {
     addAirports,
     searchedAirports,
     indexedAirports,
     setLoading,
     setMessage,
+    totalItems,
+    setTotalItems,
   } = useStore((state) => state);
   const getAirports = useCallback(async () => {
     if (searchedAirports.hasOwnProperty(offset)) {
@@ -53,7 +54,6 @@ export function useAirportList(offset: string) {
           offset,
         },
       });
-      // const data = { data: test, pagination: { total: test.length } };
       setTotalItems(data.pagination.total);
       addAirports({
         [offset]: data.data,
@@ -71,7 +71,14 @@ export function useAirportList(offset: string) {
     } finally {
       setLoading(false);
     }
-  }, [offset, searchedAirports, addAirports, setLoading, setMessage]);
+  }, [
+    offset,
+    searchedAirports,
+    addAirports,
+    setLoading,
+    setMessage,
+    setTotalItems,
+  ]);
 
   const handleSearch = (value: string) => {
     const airports = Object.values(indexedAirports);
