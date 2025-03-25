@@ -21,6 +21,44 @@ Sky Connect es una aplicación web diseñada para buscar y mostrar información 
 
 - **API de Aeropuertos**: Endpoint `/api/airports` para obtener información sobre aeropuertos.
 
+## Estructura general del Proyecto
+
+```
+sky-connect/
+├── __tests__/                # Directorio de pruebas
+│   ├── api/                  # Pruebas de integración para las APIs
+│   │   └── airportsApi.test.tsx
+│   ├── mock/                 # Mocks para las pruebas
+│   │   ├── handlers.ts       # Manejadores de MSW para simular respuestas de API
+│   │   └── server.ts         # Configuración del servidor MSW
+│   └── setup.ts              # Configuración global para las pruebas
+├── components/               # Componentes de React
+│   ├── pages/                # Componentes de páginas
+│   │   └── Home.tsx          # Componente de la página principal
+│   ├── shared/               # Componentes compartidos
+│   │   ├── searcher/         # Componente de búsqueda
+│   │   │   └── Searcher.tsx
+│   │   ├── loader/           # Componente de carga
+│   │   │   └── Loader.tsx
+│   │   ├── paginator/        # Componente de paginación
+│   │   │   └── Paginator.tsx
+│   │   ├── theme/            # Componente de tema
+│   │   │   └── Theme.tsx
+│   │   └── toaster/          # Componente de notificaciones
+│   │       └── Toaster.tsx
+├── providers/                # Proveedores de contextos
+│   ├── store.tsx  /          # Store de la App
+│   ├── theme.tsx  /          # Theme de la App
+├── hooks/                    # Páginas de Next.js
+│   ├── useAirports.ts/       # Hooks para separar logica de UI a nivel de contexto aeropuertos
+├── store/                    # Páginas de Next.js
+│   ├── airports.ts/          # Store de la App
+├── pages/                    # Páginas de Next.js
+│   ├── api/                  # Rutas de API de Next.js
+│   │   └── airports
+|   |         |__ route.ts       # Endpoint de la API de aeropuertos
+```
+
 ## Descripción de los Principales Componentes
 
 - **Home**: Componente principal que muestra la lista de aeropuertos y permite realizar búsquedas.
