@@ -5,6 +5,7 @@ import Loader from "@/components/shared/loader/Loader";
 import Toaster from "@/components/shared/toaster/Toaster";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import "./globals.css";
+import Theme from "@/components/shared/theme/Theme";
 
 export const metadata: Metadata = {
   title: "Sky Connect",
@@ -24,6 +25,8 @@ export default function RootLayout({
         <StoreProvider>
           <ThemeProvider>
             {children}
+            <Theme />
+
             <Loader />
             <Toaster />
           </ThemeProvider>

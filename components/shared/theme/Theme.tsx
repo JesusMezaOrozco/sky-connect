@@ -15,9 +15,9 @@ import { themes } from "@/constants";
 const Theme = () => {
   const { setTheme, theme } = useTheme();
   return (
-    <Menubar className="relative shadow-none">
+    <Menubar className="absolute right-10 bottom-12 z-1000 bg-[var(--dark)] shadow-none">
       <MenubarMenu>
-        <MenubarTrigger className="">
+        <MenubarTrigger>
           {theme === "light" ? (
             <Image
               src="/icons/sun.svg"
@@ -36,7 +36,10 @@ const Theme = () => {
             />
           )}
         </MenubarTrigger>
-        <MenubarContent className="absolute -right-12 mt-3 min-w-[120px] rounded bg-[var(--dark)] py-2">
+        <MenubarContent
+          side="top"
+          className="absolute z-1000 -mt-12 -ml-32 min-w-[120px] rounded bg-[var(--dark)] py-2"
+        >
           {themes.map((mode) => (
             <MenubarItem
               key={mode.value}

@@ -31,7 +31,7 @@ export function useAirportDetail(id: string) {
 export function useAirportList(offset: string) {
   const [airports, setAirports] = useState<Airport[]>([]);
   const [filter, setFilter] = useState("");
-  const [totalItems, setTotalItems] = useState(test.length);
+  const [totalItems, setTotalItems] = useState(0);
   const {
     addAirports,
     searchedAirports,
